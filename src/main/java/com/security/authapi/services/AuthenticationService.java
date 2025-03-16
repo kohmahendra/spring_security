@@ -1,9 +1,9 @@
-package com.tericcabrel.authapi.services;
+package com.security.authapi.services;
 
-import com.tericcabrel.authapi.dtos.LoginUserDto;
-import com.tericcabrel.authapi.dtos.RegisterUserDto;
-import com.tericcabrel.authapi.entities.User;
-import com.tericcabrel.authapi.repositories.UserRepository;
+import com.security.authapi.dtos.LoginUserDto;
+import com.security.authapi.dtos.RegisterUserDto;
+import com.security.authapi.entities.User;
+import com.security.authapi.repositories.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,4 +1,4 @@
-package com.tericcabrel.authapi.dtos;
+package com.security.authapi.dtos;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.tericcabrel.authapi.responses;
+package com.security.authapi.responses;
 
 public class LoginResponse {
     private String token;
@@ -9,7 +9,7 @@ public class LoginResponse {
         return token;
     }
 
-    public LoginResponse setToken(String token) {
+    public LoginResponse setToken(final String token) {
         this.token = token;
         return this;
     }
@@ -18,7 +18,7 @@ public class LoginResponse {
         return expiresIn;
     }
 
-    public LoginResponse setExpiresIn(long expiresIn) {
+    public LoginResponse setExpiresIn(final long expiresIn) {
         this.expiresIn = expiresIn;
         return this;
     }

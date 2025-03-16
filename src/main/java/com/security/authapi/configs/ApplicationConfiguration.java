@@ -1,6 +1,6 @@
-package com.tericcabrel.authapi.configs;
+package com.security.authapi.configs;
 
-import com.tericcabrel.authapi.repositories.UserRepository;
+import com.security.authapi.repositories.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class ApplicationConfiguration {
     private final UserRepository userRepository;
 
-    public ApplicationConfiguration(UserRepository userRepository) {
+    public ApplicationConfiguration(final UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -31,13 +31,13 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    public AuthenticationManager authenticationManager(final AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
     @Bean
     AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        final DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());

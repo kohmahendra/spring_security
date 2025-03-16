@@ -1,4 +1,4 @@
-package com.tericcabrel.authapi.services;
+package com.security.authapi.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -79,7 +79,7 @@ public class JwtService {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
-      
+
     }
 
     private SecretKey getSignInKey() {

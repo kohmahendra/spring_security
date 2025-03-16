@@ -1,11 +1,20 @@
 create table users
 (
-    id        int auto_increment primary key,
-    full_name varchar(50) null,
-    email     varchar(50) null,
-    password  varchar(50) null,
-    createdAt datetime null,
-    updatedAt datetime null
+    id                 int          not null
+        primary key,
+    created_date_time  datetime(6)  null,
+    email              varchar(255) not null,
+    first_name         varchar(255) not null,
+    last_name          varchar(255) not null,
+    modified_date_time datetime(6)  null,
+    password           varchar(255) not null,
+    constraint users_email_uk
+        unique (email)
+);
+
+create table users_seq
+(
+    next_val bigint null
 );
 
 create table authorities

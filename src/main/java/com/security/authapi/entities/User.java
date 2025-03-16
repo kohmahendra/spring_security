@@ -1,4 +1,4 @@
-package com.tericcabrel.authapi.entities;
+package com.security.authapi.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,30 +32,39 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(unique = true, length = 100, nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
     @CreationTimestamp
-    @Column(updatable = false, name = "created_at")
-    private Date createdAt;
+    @Column(updatable = false, name = "created_date_time")
+    private Date createdDateTime;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
-    private Date updatedAt;
+    @Column(name = "modified_date_time")
+    private Date modifiedDateTime;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public List<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    @Builder.Default
+    private List<Role> roles = new ArrayList<>();
 
     @Override
     public String getUsername() {
         return email;
     }
-
 
     @Override
     public boolean isAccountNonExpired() {
@@ -76,7 +85,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 
 }
 

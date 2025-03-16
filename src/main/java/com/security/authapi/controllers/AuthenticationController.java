@@ -1,11 +1,11 @@
-package com.tericcabrel.authapi.controllers;
+package com.security.authapi.controllers;
 
-import com.tericcabrel.authapi.dtos.LoginUserDto;
-import com.tericcabrel.authapi.dtos.RegisterUserDto;
-import com.tericcabrel.authapi.entities.User;
-import com.tericcabrel.authapi.responses.LoginResponse;
-import com.tericcabrel.authapi.services.AuthenticationService;
-import com.tericcabrel.authapi.services.JwtService;
+import com.security.authapi.dtos.LoginUserDto;
+import com.security.authapi.dtos.RegisterUserDto;
+import com.security.authapi.entities.User;
+import com.security.authapi.responses.LoginResponse;
+import com.security.authapi.services.AuthenticationService;
+import com.security.authapi.services.JwtService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
