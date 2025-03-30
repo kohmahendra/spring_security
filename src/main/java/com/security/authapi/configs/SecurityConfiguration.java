@@ -38,6 +38,7 @@ public class SecurityConfiguration {
                                         .requestMatchers("/auth/**").permitAll()
                                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
+                .cors(corsConfigurer -> corsConfigurer.configurationSource(corsConfigurationSource()))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
