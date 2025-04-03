@@ -1,0 +1,18 @@
+package com.security.authapi.configs;
+
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.web.config.SpringDataWebSettings;
+
+@Configuration
+@EnableConfigurationProperties(SpringDataWebProperties.class)
+public class DataRestConfig {
+
+    @Bean
+    public SpringDataWebSettings springDataWebSettings(final SpringDataWebProperties springDataWebProperties) {
+        return new SpringDataWebSettings(springDataWebProperties.getPageable().getSerializationMode());
+    }
+
+}

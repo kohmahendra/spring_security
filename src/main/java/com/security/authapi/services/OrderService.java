@@ -1,6 +1,7 @@
 package com.security.authapi.services;
 
 import com.security.authapi.entities.Order;
+import com.security.authapi.model.OrderSearchParams;
 import com.security.authapi.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -22,8 +23,8 @@ public class OrderService {
     }
 
     @Transactional
-    public Page<Order> getOrders(final Pageable pageable) {
-        return orderRepository.findAll(pageable);
+    public Page<Order> getOrders(final OrderSearchParams orderSearchParams, final Pageable pageable) {
+        return orderRepository.getOrders(orderSearchParams, pageable);
     }
 
 }
