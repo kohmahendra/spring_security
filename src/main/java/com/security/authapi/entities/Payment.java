@@ -1,9 +1,7 @@
 package com.security.authapi.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,12 +14,18 @@ import java.time.LocalDate;
 @Table(name = "payments")
 public class Payment {
     @EmbeddedId
-    private PaymentPK id;
+    private PaymentId id;
 
-    
+    @MapsId("customerNumber")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_number", nullable = false)
+    private Customer customerNumber;
+
+    @NotNull
     @Column(name = "payment_date", nullable = false)
     private LocalDate paymentDate;
 
+    @NotNull
     @Column(name = "amount", nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 

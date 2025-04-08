@@ -1,6 +1,6 @@
 package com.security.authapi.controllers;
 
-import com.security.authapi.dtos.LoginUserDto;
+import com.security.authapi.dtos.LoginUserDTO;
 import com.security.authapi.dtos.RegisterUserDto;
 import com.security.authapi.entities.User;
 import com.security.authapi.mapper.UserMappper;
@@ -31,7 +31,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> authenticate(@RequestBody final LoginUserDto loginUserDto) {
+    public ResponseEntity<LoginResponse> authenticate(@RequestBody final LoginUserDTO loginUserDto) {
         final User authenticatedUser = authenticationService.authenticate(loginUserDto);
 
         final String jwtToken = jwtService.generateToken(authenticatedUser);

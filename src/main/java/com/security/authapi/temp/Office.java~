@@ -1,0 +1,7 @@
+package com.security.authapi.temp;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Office {
+  }

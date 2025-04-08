@@ -1,6 +1,6 @@
 package com.security.authapi.services;
 
-import com.security.authapi.dtos.LoginUserDto;
+import com.security.authapi.dtos.LoginUserDTO;
 import com.security.authapi.dtos.RegisterUserDto;
 import com.security.authapi.entities.User;
 import com.security.authapi.repositories.UserRepository;
@@ -37,7 +37,7 @@ public class AuthenticationService {
                 .build());
     }
 
-    public User authenticate(final LoginUserDto input) {
+    public User authenticate(final LoginUserDTO input) {
         final UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                 new UsernamePasswordAuthenticationToken(input.getEmail(), input.getPassword());
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);

@@ -15,7 +15,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query("SELECT o FROM Order o WHERE " +
             "(:#{#searchParams.orderNumber} is null or o.id = :#{#searchParams.orderNumber}) " +
-            "AND (:#{#searchParams.customerNumber} is null or o.customerNumber = :#{#searchParams.customerNumber}) "
+            "AND (:#{#searchParams.customerNumber} is null or o.customer.id = :#{#searchParams.customerNumber}) " +
+            "AND (:#{#searchParams.orderStatus} is null or o.status = :#{#searchParams.orderStatus}) "
     )
     Page<Order> getOrders(@Param("searchParams") final OrderSearchParams searchParams, final Pageable pageable);
 }
